@@ -88,7 +88,7 @@ public class @Character : IInputActionCollection, IDisposable
                     ""id"": ""842db708-71eb-4800-a958-67da1e0e57c2"",
                     ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": ""StickDeadzone,ScaleVector2(x=0.6)"",
                     ""groups"": ""Controller"",
                     ""action"": ""Walk"",
                     ""isComposite"": false,

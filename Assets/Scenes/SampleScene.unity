@@ -2237,6 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c626c26fad3b240893b91f412479c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraObj: {fileID: 0}
 --- !u!114 &318411843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7065,13 +7066,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.108952284, y: -0.67085075, z: 0.100551255, w: 0.72662103}
-  m_LocalPosition: {x: -182.69931, y: -79.37113, z: -2073.1877}
+  m_LocalRotation: {x: 0.18301274, y: -0.6830127, z: 0.18301274, w: 0.6830127}
+  m_LocalPosition: {x: -185.49025, y: -78.32, z: -2073.1003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: -90.00001, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7085,7 +7086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 1.5
-  target: {fileID: 318411840}
+  offsetPosition: {x: -2, y: 0, z: 1}
+  target: {fileID: 1015734599}
 --- !u!1 &964341392
 GameObject:
   m_ObjectHideFlags: 0
@@ -7389,6 +7391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c626c26fad3b240893b91f412479c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraObj: {fileID: 963194225}
 --- !u!143 &1015734596
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7438,6 +7441,12 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 963194227}
+--- !u!4 &1015734599 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 4433cf75ba397654aa7fa86853e4fb70,
+    type: 3}
+  m_PrefabInstance: {fileID: 1138803962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1022245724
 GameObject:
   m_ObjectHideFlags: 0

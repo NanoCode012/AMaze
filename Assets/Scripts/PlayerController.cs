@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-    public Transform cameraTarget;
-    
-    private float rotSpeed = 5.0f;
+    public GameObject cameraObj;
+    private Transform cameraTarget;
+    private CameraController cameraController;
+
+    private float rotSpeed = 1.5f;
     private float moveSpeed = 0.75f;
 
     private Animator animator;
@@ -21,16 +23,17 @@ public class PlayerController : MonoBehaviour
     private float speed;
 
 
-    private void Awake() 
+    private void Awake()
     {
         character = new Character();
 
-        character.Player.Walk.performed += ctx => {
-            // print(ctx.ReadValueAsObject());
+        character.Player.Walk.performed += ctx =>
+        {
             currentMovement = ctx.ReadValue<Vector2>();
         };
 
-        character.Player.Walk.canceled += ctx => {
+        character.Player.Walk.canceled += ctx =>
+        {
             currentMovement = Vector2.zero;
         };
 
@@ -41,49 +44,60 @@ public class PlayerController : MonoBehaviour
         // };
     }
 
-    private void Start() {
+    private void Start()
+    {
         animator = GetComponent<Animator>();
 
         speedHash = Animator.StringToHash("Speed_f");
 
-        if (cameraTarget == null) {
+        if (cameraObj == null)
+        {
             throw new System.Exception("Camera cannot be empty");
+        }
+        else
+        {
+            cameraTarget = cameraObj.transform;
+            cameraController = cameraObj.GetComponent<CameraController>();
         }
     }
 
-    private void Update() {
+    private void Update()
+    {
         movementPressed = currentMovement.x != 0 || currentMovement.y != 0;
         handleMovement();
         handleRotation();
     }
 
-    private void handleMovement() {
+    private void handleMovement()
+    {
         // speed = animator.GetFloat(speedHash);
 
-        if (movementPressed) {
+        if (movementPressed)
+        {
             var maxSpeed = Mathf.Max(Mathf.Abs(currentMovement.x), Mathf.Abs(currentMovement.y));
-            var newSpeed = moveSpeed*maxSpeed;
-            print(newSpeed);
+            var newSpeed = moveSpeed * maxSpeed;
             animator.SetFloat(speedHash, newSpeed);
-        } else {
+
+            // cameraController.AdjustDistance(newSpeed);
+        }
+        else
+        {
             animator.SetFloat(speedHash, 0f);
         }
     }
 
-    private void handleRotation() {
-        // Vector3 currentPosition = transform.position;
+    private void handleRotation()
+    {
+        if (movementPressed)
+        {
+            //Not allow backward movement
+            if (currentMovement.y < 0) return;
 
-        
-        // Vector3 positionToLookAt = cameraTarget.transform.position + newPosition;
-
-        // Quaternion tmp = cameraTarget.rotation;
-        // tmp.eulerAngles = new Vector3(0, cameraTarget.eulerAngles.y, 0);
-        
-        if (movementPressed) {
-            Vector3 dir = new Vector3(currentMovement.x, 0, currentMovement.y);
-
+            Vector3 dir = new Vector3(currentMovement.x * rotSpeed, 0, currentMovement.y);
+            print(currentMovement.x * rotSpeed);
             // this is the direction in the world space we want to move
             var desiredMoveDirection = cameraTarget.TransformDirection(dir);
+            desiredMoveDirection.y = 0; //don't move in y dir
 
             // lerp rotation into at direction
             transform.rotation = Quaternion.Slerp(
@@ -91,14 +105,18 @@ public class PlayerController : MonoBehaviour
                 Quaternion.LookRotation(desiredMoveDirection),
                 Time.deltaTime * rotSpeed
             );
+
+
         }
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         character.Player.Enable();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         character.Player.Disable();
     }
 }
