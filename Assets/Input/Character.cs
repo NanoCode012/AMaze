@@ -20,9 +20,9 @@ public class @Character : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Walk"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""11e04f5d-cd31-4986-8932-f29ef3587c5c"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
                 }
