@@ -34,14 +34,13 @@ public class KeyHolder : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        bool e = Input.GetKeyDown(KeyCode.E);
         Key key = collider.GetComponent<Key>();
         if(key != null)
         {
-            if(e){
-                AddKey(key.GetKeyType());
-                Destroy(key.gameObject);
-            }
+            
+            AddKey(key.GetKeyType());
+            Destroy(key.gameObject);
+           
         }
 
         KeyDoor keyDoor = collider.GetComponent<KeyDoor>();
