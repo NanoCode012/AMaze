@@ -217,8 +217,7 @@ public class PlayerController : MonoBehaviour
             text += "- " + item + "\n";
         }
 
-        var inventoryObject = playerCanvas.transform.Find("Inventory");
-        inventoryObject.GetComponent<Text>().text = text;
+        inventoryTextBox.text = text;
 
         print("item " + text);
     }
