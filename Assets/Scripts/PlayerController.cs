@@ -20,6 +20,14 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Character character;
 
+    private float hp = 1.0f;
+    private float stamina = 1.0f;
+
+    private Text interactTextBox;
+    private Text inventoryTextBox;
+    private Slider hpBar;
+    private Slider staminaBar;
+
     private Vector2 currentMovement;
     private bool movementPressed;
     private int speedHash;
@@ -75,6 +83,11 @@ public class PlayerController : MonoBehaviour
         }
 
         inventory = new Inventory();
+
+        interactTextBox = FindCanvasChildren("Interact message").GetComponent<Text>();
+        inventoryTextBox = FindCanvasChildren("Inventory").GetComponent<Text>();
+        hpBar = FindCanvasChildren("HP bar").GetComponent<Slider>();
+        staminaBar = FindCanvasChildren("Stamina bar").GetComponent<Slider>();
     }
 
     private void Update()
@@ -84,6 +97,8 @@ public class PlayerController : MonoBehaviour
         handleRotation();
 
         handleInteraction();
+
+        handleBars();
     }
 
     private void handleMovement()
@@ -94,6 +109,8 @@ public class PlayerController : MonoBehaviour
         {
             var maxSpeed = Mathf.Max(Mathf.Abs(currentMovement.x), Mathf.Abs(currentMovement.y));
             var newSpeed = moveSpeed * maxSpeed;
+            if (isRunning) newSpeed += 2.0f;
+
             animator.SetFloat(speedHash, newSpeed);
 
             // cameraController.AdjustDistance(newSpeed);
@@ -147,6 +164,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void handleBars()
+    {
+        hpBar.value = hp;
+        staminaBar.value = stamina;
+    }
+
     private void OnEnable()
     {
         character.Player.Enable();
@@ -163,9 +186,10 @@ public class PlayerController : MonoBehaviour
         {
             print("Got item");
             interactingObject = other.gameObject;
+            ShowInteractMessage();
+
             if (other.GetComponent<Key>())
             {
-                ShowInteractMessage();
                 interactingObjectType = Item.ItemType.Key;
             }
         }
@@ -176,13 +200,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Item"))
         {
             print("Leaving item");
-            if (other.GetComponent<Key>())
-            {
-                ShowInteractMessage(false);
-            }
-        }
-        else
-        {
+            ShowInteractMessage(false);
             interactingObject = null;
             interactingObjectType = Item.ItemType.None;
         }
@@ -191,10 +209,10 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInventory()
     {
-        var l = inventory.GetInventory();
+        var temp = inventory.GetInventory();
         string text = "";
 
-        foreach (var item in l)
+        foreach (var item in temp)
         {
             text += "- " + item + "\n";
         }
@@ -207,7 +225,11 @@ public class PlayerController : MonoBehaviour
 
     private void ShowInteractMessage(bool show = true)
     {
-        var child = playerCanvas.transform.Find("Interact message");
-        child.GetComponent<Text>().enabled = show;
+        interactTextBox.enabled = show;
+    }
+
+    private GameObject FindCanvasChildren(string name)
+    {
+        return playerCanvas.transform.Find(name).gameObject;
     }
 }

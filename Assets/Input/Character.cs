@@ -40,7 +40,7 @@ public class @Character : IInputActionCollection, IDisposable
                     ""id"": ""245467ea-5895-4c79-a323-e34370e8af7a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
