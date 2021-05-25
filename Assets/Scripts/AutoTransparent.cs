@@ -12,12 +12,15 @@ public class AutoTransparent : MonoBehaviour
 
     private Renderer rendererTarget;
 
+    private bool canRun = true;
+
     void Start()
     {
         rendererTarget = GetComponent<Renderer>();
         if (!rendererTarget || !rendererTarget.material || !rendererTarget.material.HasProperty("_Color"))
         {
             Debug.LogError("Missing renderer or material");
+            canRun = false;
             Destroy(this);
             return;
         }
@@ -29,22 +32,26 @@ public class AutoTransparent : MonoBehaviour
     public void BeTransparent()
     {
         // reset the transparency;
-        m_Transparency = m_TargetTransparancy;
+        if (canRun) m_Transparency = m_TargetTransparancy;
     }
 
     void Update()
     {
-        if (m_Transparency < 1.0f)
+        if (canRun)
         {
-            Color C = rendererTarget.material.color;
-            C.a = m_Transparency;
-            rendererTarget.material.color = C;
+            if (m_Transparency < 1.0f)
+            {
+                Color C = rendererTarget.material.color;
+                C.a = m_Transparency;
+                rendererTarget.material.color = C;
+            }
+            else
+            {
+                Destroy(this);
+            }
+            m_Transparency += ((1.0f - m_TargetTransparancy) * Time.deltaTime) / m_FallOff;
+
         }
-        else
-        {
-            Destroy(this);
-        }
-        m_Transparency += ((1.0f - m_TargetTransparancy) * Time.deltaTime) / m_FallOff;
     }
 
     private void OnDestroy()
