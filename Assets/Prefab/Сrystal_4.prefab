@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33048252282213286}
   - component: {fileID: 23903727571499028}
   - component: {fileID: 2960643993707366840}
+  - component: {fileID: -6167322796207667182}
   m_Layer: 0
   m_Name: "\u0421rystal_4"
   m_TagString: Item
@@ -92,3 +93,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab09c16035886a744959498479595f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-6167322796207667182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247055729035894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8713811, y: 1.1161511, z: 0.7620257}
+  m_Center: {x: -0.00000008940697, y: 0, z: 0}

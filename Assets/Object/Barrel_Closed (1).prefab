@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2596600316912062009}
   - component: {fileID: 2629847570141758889}
   - component: {fileID: 2617790409110421781}
+  - component: {fileID: 7289220609515130832}
   m_Layer: 0
   m_Name: Barrel_Closed (1)
   m_TagString: Untagged
@@ -80,3 +81,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7289220609515130832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594890942532649973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2567098, y: 2.2756956, z: 2.3147454}
+  m_Center: {x: -0.00000005960464, y: 0.00000005960464, z: 2.1175824e-22}
