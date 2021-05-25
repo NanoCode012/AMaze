@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool movementPressed;
     private int speedHash;
     private float speed;
+    private bool isRunning;
 
     private Inventory inventory;
     private GameObject interactingObject;
@@ -48,6 +49,11 @@ public class PlayerController : MonoBehaviour
         character.Player.Interact.performed += ctx =>
         {
             interactPressed = true;
+        };
+
+        character.Player.Run.performed += ctx =>
+        {
+            isRunning = ctx.ReadValueAsButton();
         };
 
     }
