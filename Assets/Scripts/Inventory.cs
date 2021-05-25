@@ -9,7 +9,7 @@ public class Inventory
 
     public void AddItem(Item item)
     {
-        if (items.Count >= maxSize)
+        if (IsFull())
         {
             throw new System.Exception("Cannot add. Inventory full");
         }
@@ -26,6 +26,11 @@ public class Inventory
     public IEnumerable<string> GetInventory()
     {
         return items.Select(item => item.Name);
+    }
+
+    public bool IsFull()
+    {
+        return (items.Count >= maxSize);
     }
 
 }

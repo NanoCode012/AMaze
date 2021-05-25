@@ -9,6 +9,7 @@ public class Item
         Key,
         HealthPotion,
         StaminaPotion,
+        Crystal,
     }
 
     public string Name { get; set; }
