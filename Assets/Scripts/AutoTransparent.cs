@@ -19,6 +19,7 @@ public class AutoTransparent : MonoBehaviour
         {
             Debug.LogError("Missing renderer or material");
             Destroy(this);
+            return;
         }
         m_OldShader = rendererTarget.material.shader;
         m_OldColor = rendererTarget.material.color;
