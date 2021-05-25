@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             if (currentMovement.y < 0) return;
 
             Vector3 dir = new Vector3(currentMovement.x * rotSpeed, 0, currentMovement.y);
-            print(currentMovement.x * rotSpeed);
+
             // this is the direction in the world space we want to move
             var desiredMoveDirection = cameraTarget.TransformDirection(dir);
             desiredMoveDirection.y = 0; //don't move in y dir
