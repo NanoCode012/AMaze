@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public Transform target;
 
     private float cameraDistance = 2f;
-    private float cameraHeight = 2f;
+    private float cameraHeight = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
