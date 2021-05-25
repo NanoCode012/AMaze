@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public GameObject playerCanvas;
+
     public GameObject cameraObj;
     private Transform cameraTarget;
     private CameraController cameraController;
@@ -17,10 +20,24 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Character character;
 
+    private float hp = 1.0f;
+    private float stamina = 1.0f;
+
+    private Text interactTextBox;
+    private Text inventoryTextBox;
+    private Slider hpBar;
+    private Slider staminaBar;
+
     private Vector2 currentMovement;
     private bool movementPressed;
     private int speedHash;
     private float speed;
+    private bool isRunning;
+
+    private Inventory inventory;
+    private GameObject interactingObject;
+    private Item.ItemType interactingObjectType = Item.ItemType.None;
+    private bool interactPressed;
 
 
     private void Awake()
@@ -37,11 +54,16 @@ public class PlayerController : MonoBehaviour
             currentMovement = Vector2.zero;
         };
 
-        // character.PlayerKeyboard.Walk.performed += ctx => {
-        //     print(ctx.ReadValueAsObject());
-        //     currentMovement = ctx.ReadValue<Vector2>();
-        //     movementPressed = currentMovement.x != 0 || currentMovement.y != 0;
-        // };
+        character.Player.Interact.performed += ctx =>
+        {
+            interactPressed = true;
+        };
+
+        character.Player.Run.performed += ctx =>
+        {
+            isRunning = ctx.ReadValueAsButton();
+        };
+
     }
 
     private void Start()
@@ -59,6 +81,13 @@ public class PlayerController : MonoBehaviour
             cameraTarget = cameraObj.transform;
             cameraController = cameraObj.GetComponent<CameraController>();
         }
+
+        inventory = new Inventory();
+
+        interactTextBox = FindCanvasChildren("Interact message").GetComponent<Text>();
+        inventoryTextBox = FindCanvasChildren("Inventory").GetComponent<Text>();
+        hpBar = FindCanvasChildren("HP bar").GetComponent<Slider>();
+        staminaBar = FindCanvasChildren("Stamina bar").GetComponent<Slider>();
     }
 
     private void Update()
@@ -66,6 +95,10 @@ public class PlayerController : MonoBehaviour
         movementPressed = currentMovement.x != 0 || currentMovement.y != 0;
         handleMovement();
         handleRotation();
+
+        handleInteraction();
+
+        handleBars();
     }
 
     private void handleMovement()
@@ -76,6 +109,8 @@ public class PlayerController : MonoBehaviour
         {
             var maxSpeed = Mathf.Max(Mathf.Abs(currentMovement.x), Mathf.Abs(currentMovement.y));
             var newSpeed = moveSpeed * maxSpeed;
+            if (isRunning) newSpeed += 2.0f;
+
             animator.SetFloat(speedHash, newSpeed);
 
             // cameraController.AdjustDistance(newSpeed);
@@ -110,6 +145,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void handleInteraction()
+    {
+        if (interactPressed)
+        {
+            print("interact pressed");
+
+            if (interactingObjectType != Item.ItemType.None)
+            {
+                Destroy(interactingObject);
+                inventory.AddItem(new Item("Key", Item.ItemType.Key));
+                UpdateInventory();
+                print("picked up key");
+                ShowInteractMessage(false);
+            }
+
+            interactPressed = false;
+        }
+    }
+
+    private void handleBars()
+    {
+        hpBar.value = hp;
+        staminaBar.value = stamina;
+    }
+
     private void OnEnable()
     {
         character.Player.Enable();
@@ -118,5 +178,57 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         character.Player.Disable();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            print("Got item");
+            interactingObject = other.gameObject;
+            ShowInteractMessage();
+
+            if (other.GetComponent<Key>())
+            {
+                interactingObjectType = Item.ItemType.Key;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            print("Leaving item");
+            ShowInteractMessage(false);
+            interactingObject = null;
+            interactingObjectType = Item.ItemType.None;
+        }
+
+    }
+
+    private void UpdateInventory()
+    {
+        var temp = inventory.GetInventory();
+        string text = "";
+
+        foreach (var item in temp)
+        {
+            text += "- " + item + "\n";
+        }
+
+        inventoryTextBox.text = text;
+
+        print("item " + text);
+    }
+
+    private void ShowInteractMessage(bool show = true)
+    {
+        interactTextBox.enabled = show;
+    }
+
+    private GameObject FindCanvasChildren(string name)
+    {
+        return playerCanvas.transform.Find(name).gameObject;
     }
 }

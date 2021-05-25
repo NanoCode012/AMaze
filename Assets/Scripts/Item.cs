@@ -1,9 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item
 {
+    public enum ItemType
+    {
+        None,
+        Key,
+        HealthPotion,
+        StaminaPotion,
+    }
+
     public string Name { get; set; }
-    public GameObject Prefab { get; set; }
+    public ItemType Type { get; set; }
+
+    public Item(string name, ItemType type)
+    {
+        Name = name;
+        Type = type;
+    }
 }
