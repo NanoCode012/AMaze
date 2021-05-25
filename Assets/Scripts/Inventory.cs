@@ -1,21 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    private List<Item> items;
+    private List<Item> items = new List<Item>();
     private int maxSize = 2;
-
-    private void Start()
-    {
-        items = new List<Item>();
-    }
 
     public void AddItem(Item item)
     {
-        if (items.Count > maxSize)
+        if (items.Count >= maxSize)
         {
             throw new System.Exception("Cannot add. Inventory full");
         }
