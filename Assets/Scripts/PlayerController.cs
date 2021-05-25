@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private Item.ItemType interactingObjectType = Item.ItemType.None;
     private bool interactPressed;
 
+    private ItemController itemController;
 
     private void Awake()
     {
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         }
 
         inventory = new Inventory();
+        itemController = FindObjectOfType<ItemController>();
 
         interactTextBox = FindCanvasChildren("Interact message").GetComponent<Text>();
         inventoryTextBox = FindCanvasChildren("Inventory").GetComponent<Text>();
@@ -147,22 +149,17 @@ public class PlayerController : MonoBehaviour
 
     private void handleInteraction()
     {
-        if (interactPressed)
+        if (interactPressed && interactingObject)
         {
             print("interact pressed");
-
-            if (interactingObjectType != Item.ItemType.None)
-            {
-                Destroy(interactingObject);
-                inventory.AddItem(new Item("Key", Item.ItemType.Key));
-                UpdateInventory();
-                print("picked up key");
-                ShowInteractMessage(false);
-            }
-
+            itemController.InteractItem(this, interactingObject, interactingObjectType);
+            UpdateInventory();
             interactPressed = false;
+            ShowInteractMessage(false);
         }
     }
+
+    public void AddInventoryItem(Item item) => inventory.AddItem(item);
 
     private void handleBars()
     {
