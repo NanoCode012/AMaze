@@ -10,13 +10,14 @@ public class ItemController : MonoBehaviour
     public void InteractItem(PlayerController player, GameObject obj)
     {
         if (!obj) return;
+        if (obj.tag != "Item" && obj.transform.root.tag != "Item") return;
 
         var itemType = GetItemType(obj);
 
         if (itemType == Item.ItemType.Key)
         {
             print("picked up key");
-            player.AddInventoryItem(new Item("Key", Item.ItemType.Key));
+            player.AddKey(new Item("Key", Item.ItemType.Key));
         }
         else if (itemType == Item.ItemType.HealthPotion)
         {
@@ -66,8 +67,30 @@ public class ItemController : MonoBehaviour
                 print("increased stamina");
                 player.Stamina += 0.2f;
                 break;
+            case Item.ItemType.Key:
+                // Check if got door
+                // If no door, don't allow use
+                break;
             default:
                 break;
+        }
+    }
+
+    public void SpawnItem(PlayerController player, Item item)
+    {
+        Instantiate(GetPrefab(item), new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, player.transform.position.z), Quaternion.identity);
+    }
+
+    public GameObject GetPrefab(Item item)
+    {
+        switch (item.Type)
+        {
+            case Item.ItemType.HealthPotion:
+                return HealthPrefab;
+            case Item.ItemType.StaminaPotion:
+                return StaminaPrefab;
+            default:
+                return null;
         }
     }
 

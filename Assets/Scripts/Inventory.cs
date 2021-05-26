@@ -23,6 +23,12 @@ public class Inventory
         return item;
     }
 
+    public void Rotate()
+    {
+        var item = Pop();
+        AddItem(item);
+    }
+
     public IEnumerable<string> GetInventory()
     {
         return items.Select(item => item.Name);
@@ -34,5 +40,4 @@ public class Inventory
     }
 
     public int Size() => items.Count;
-
 }
