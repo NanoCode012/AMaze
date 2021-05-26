@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public GameObject HPPrefab;
+    public GameObject HealthPrefab;
     public GameObject StaminaPrefab;
 
     public void InteractItem(PlayerController player, GameObject obj)
@@ -31,11 +31,44 @@ public class ItemController : MonoBehaviour
         else if (itemType == Item.ItemType.Crystal)
         {
             print("Touched crystal");
-            Instantiate(StaminaPrefab, obj.transform.position, Quaternion.identity);
+
+            var choicePrefab = GetRandomPrefab();
+            if (choicePrefab != null) Instantiate(choicePrefab, obj.transform.position, Quaternion.identity);
         }
 
         Destroy(obj);
 
+    }
+
+    private GameObject GetRandomPrefab()
+    {
+        var choice = Random.Range(0, 2);
+        switch (choice)
+        {
+            case 0:
+                return HealthPrefab;
+            case 1:
+                return StaminaPrefab;
+            default:
+                return null;
+        }
+    }
+
+    public void UseItem(PlayerController player, Item item)
+    {
+        switch (item.Type)
+        {
+            case Item.ItemType.HealthPotion:
+                print("increased hp");
+                player.Hp += 0.2f;
+                break;
+            case Item.ItemType.StaminaPotion:
+                print("increased stamina");
+                player.Stamina += 0.2f;
+                break;
+            default:
+                break;
+        }
     }
 
     public Item.ItemType GetItemType(GameObject obj)
