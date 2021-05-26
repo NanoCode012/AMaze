@@ -15,7 +15,7 @@ public class AutoTransparent : MonoBehaviour
     void Start()
     {
         rendererTarget = GetComponent<Renderer>();
-        if (!rendererTarget || !rendererTarget.material || rendererTarget.material.color == null)
+        if (rendererTarget == null || rendererTarget.material == null || !rendererTarget.material.HasProperty("_Color"))
         {
             Debug.LogError("Missing renderer or material");
             Destroy(this);

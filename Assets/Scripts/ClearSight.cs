@@ -5,8 +5,9 @@ using UnityEngine;
 public class ClearSight : MonoBehaviour
 {
     private float DistanceToPlayer;
-    
-    private void Start() {
+
+    private void Start()
+    {
         DistanceToPlayer = GetComponent<CameraController>().GetCameraDistance();
     }
 
@@ -22,7 +23,9 @@ public class ClearSight : MonoBehaviour
             if (R == null)
                 continue; // no renderer attached? go to next hit
             // TODO: maybe implement here a check for GOs that should not be affected like the player
-
+            if (hit.collider.transform.tag == "Trap" ||
+                    hit.collider.transform.root.tag == "Trap")
+                continue;
 
             AutoTransparent AT = R.GetComponent<AutoTransparent>();
             if (AT == null) // if no script is attached, attach one
