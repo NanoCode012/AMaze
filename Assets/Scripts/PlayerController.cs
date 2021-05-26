@@ -235,15 +235,22 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInventory()
     {
-        var temp = inventory.GetInventory();
-        string text = "";
-
-        foreach (var item in temp)
+        if (inventory.Size() > 0)
         {
-            text += "- " + item + "\n";
-        }
+            var temp = inventory.GetInventory();
+            string text = "Press R to use\n";
 
-        inventoryTextBox.text = text;
+            foreach (var item in temp)
+            {
+                text += "- " + item + "\n";
+            }
+
+            inventoryTextBox.text = text;
+        }
+        else
+        {
+            inventoryTextBox.text = "";
+        }
     }
 
     private void ShowInteractMessage(bool show = true)
