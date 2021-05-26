@@ -25,8 +25,17 @@ public class ItemController : MonoBehaviour
         }
         else if (itemType == Item.ItemType.Crystal)
         {
+            print("Touched crystal");
             Instantiate(HPPrefab, transform.position, Quaternion.identity);
         }
 
+    }
+
+    public Item.ItemType GetItemType(GameObject obj)
+    {
+        if (obj.GetComponent<Key>()) return Item.ItemType.Key;
+        if (obj.GetComponent<Crystal>()) return Item.ItemType.Crystal;
+
+        return Item.ItemType.None;
     }
 }

@@ -151,7 +151,6 @@ public class PlayerController : MonoBehaviour
     {
         if (interactPressed && interactingObject)
         {
-            print("interact pressed");
             itemController.InteractItem(this, interactingObject, interactingObjectType);
             UpdateInventory();
             interactPressed = false;
@@ -185,10 +184,7 @@ public class PlayerController : MonoBehaviour
             interactingObject = other.gameObject;
             ShowInteractMessage();
 
-            if (other.GetComponent<Key>())
-            {
-                interactingObjectType = Item.ItemType.Key;
-            }
+            interactingObjectType = itemController.GetItemType(interactingObject);
         }
     }
 
