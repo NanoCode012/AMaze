@@ -14,30 +14,46 @@ public class ItemController : MonoBehaviour
 
         var itemType = GetItemType(obj);
 
-        if (itemType == Item.ItemType.Key)
-        {
-            print("picked up key");
-            player.AddKey(new Item("Key", Item.ItemType.Key));
-        }
-        else if (itemType == Item.ItemType.HealthPotion)
-        {
-            print("picked up healthpotion");
-            player.AddInventoryItem(new Item("Health potion", Item.ItemType.HealthPotion));
-        }
-        else if (itemType == Item.ItemType.StaminaPotion)
-        {
-            print("picked up staminapotion");
-            player.AddInventoryItem(new Item("Stamina potion", Item.ItemType.StaminaPotion));
-        }
-        else if (itemType == Item.ItemType.Crystal)
-        {
-            print("Touched crystal");
+        bool destroyObjAtEnd = true;
 
-            var choicePrefab = GetRandomPrefab();
-            if (choicePrefab != null) Instantiate(choicePrefab, obj.transform.position, Quaternion.identity);
+        switch (itemType)
+        {
+            case Item.ItemType.Key:
+                print("picked up key");
+                player.AddKey(new Item("Key", Item.ItemType.Key));
+                break;
+            case Item.ItemType.HealthPotion:
+                print("picked up healthpotion");
+                player.AddInventoryItem(new Item("Health potion", Item.ItemType.HealthPotion));
+                break;
+            case Item.ItemType.StaminaPotion:
+                print("picked up staminapotion");
+                player.AddInventoryItem(new Item("Stamina potion", Item.ItemType.StaminaPotion));
+                break;
+            case Item.ItemType.Crystal:
+                print("Touched crystal");
+
+                var choicePrefab = GetRandomPrefab();
+                if (choicePrefab != null) Instantiate(choicePrefab, obj.transform.position, Quaternion.identity);
+                break;
+            case Item.ItemType.Door:
+                print("touch door");
+                if (player.GotKey())
+                {
+                    var animator = obj.GetComponentInParent<Animator>();
+                    animator.SetTrigger("opendoor");
+                    player.RemoveKey();
+                    obj.GetComponentInParent<BoxCollider>().enabled = false;
+                }
+                else
+                {
+                    print("No key");
+                }
+                destroyObjAtEnd = false;
+                break;
         }
 
-        Destroy(obj);
+        if (destroyObjAtEnd) Destroy(obj);
 
     }
 
@@ -100,6 +116,7 @@ public class ItemController : MonoBehaviour
         if (obj.GetComponent<Crystal>()) return Item.ItemType.Crystal;
         if (obj.GetComponent<HealthPotion>()) return Item.ItemType.HealthPotion;
         if (obj.GetComponent<StaminaPotion>()) return Item.ItemType.StaminaPotion;
+        if (obj.GetComponent<Door>()) return Item.ItemType.Door;
 
         return Item.ItemType.None;
     }
