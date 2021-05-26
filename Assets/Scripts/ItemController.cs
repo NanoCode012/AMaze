@@ -10,6 +10,7 @@ public class ItemController : MonoBehaviour
     public void InteractItem(PlayerController player, GameObject obj)
     {
         if (!obj) return;
+        if (obj.tag != "Item" && obj.transform.root.tag != "Item") return;
 
         var itemType = GetItemType(obj);
 
@@ -65,6 +66,10 @@ public class ItemController : MonoBehaviour
             case Item.ItemType.StaminaPotion:
                 print("increased stamina");
                 player.Stamina += 0.2f;
+                break;
+            case Item.ItemType.Key:
+                // Check if got door
+                // If no door, don't allow use
                 break;
             default:
                 break;
