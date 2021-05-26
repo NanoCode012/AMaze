@@ -8560,8 +8560,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b1e463668e37e45818379295fbde8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPPrefab: {fileID: 0}
-  StaminaPrefab: {fileID: 0}
+  HPPrefab: {fileID: 1991989938043119878, guid: 082fdb97e1e578745a2cfc3bb9680aa0,
+    type: 3}
+  StaminaPrefab: {fileID: 8528666759936561794, guid: 94aba6afb02f8ab4db81045e893b1f31,
+    type: 3}
 --- !u!4 &647882482
 Transform:
   m_ObjectHideFlags: 0
