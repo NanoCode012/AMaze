@@ -11,8 +11,6 @@ public class ItemController : MonoBehaviour
     {
         if (!obj) return;
 
-        Destroy(obj);
-
         if (itemType == Item.ItemType.Key)
         {
             print("picked up key");
@@ -26,8 +24,10 @@ public class ItemController : MonoBehaviour
         else if (itemType == Item.ItemType.Crystal)
         {
             print("Touched crystal");
-            Instantiate(HPPrefab, transform.position, Quaternion.identity);
+            Instantiate(HPPrefab, obj.transform.position, Quaternion.identity);
         }
+
+        Destroy(obj);
 
     }
 
