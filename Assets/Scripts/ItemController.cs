@@ -7,11 +7,11 @@ public class ItemController : MonoBehaviour
     public GameObject HPPrefab;
     public GameObject StaminaPrefab;
 
-    public void InteractItem(PlayerController player, GameObject obj, Item.ItemType itemType)
+    public void InteractItem(PlayerController player, GameObject obj)
     {
         if (!obj) return;
 
-        Destroy(obj);
+        var itemType = GetItemType(obj);
 
         if (itemType == Item.ItemType.Key)
         {
@@ -23,10 +23,28 @@ public class ItemController : MonoBehaviour
             print("picked up healthpotion");
             player.AddInventoryItem(new Item("Health potion", Item.ItemType.HealthPotion));
         }
+        else if (itemType == Item.ItemType.StaminaPotion)
+        {
+            print("picked up staminapotion");
+            player.AddInventoryItem(new Item("Stamina potion", Item.ItemType.StaminaPotion));
+        }
         else if (itemType == Item.ItemType.Crystal)
         {
-            Instantiate(HPPrefab, transform.position, Quaternion.identity);
+            print("Touched crystal");
+            Instantiate(StaminaPrefab, obj.transform.position, Quaternion.identity);
         }
 
+        Destroy(obj);
+
+    }
+
+    public Item.ItemType GetItemType(GameObject obj)
+    {
+        if (obj.GetComponent<Key>()) return Item.ItemType.Key;
+        if (obj.GetComponent<Crystal>()) return Item.ItemType.Crystal;
+        if (obj.GetComponent<HealthPotion>()) return Item.ItemType.HealthPotion;
+        if (obj.GetComponent<StaminaPotion>()) return Item.ItemType.StaminaPotion;
+
+        return Item.ItemType.None;
     }
 }

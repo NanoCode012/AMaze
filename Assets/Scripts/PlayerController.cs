@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
     private Inventory inventory;
     private GameObject interactingObject;
-    private Item.ItemType interactingObjectType = Item.ItemType.None;
     private bool interactPressed;
 
     private ItemController itemController;
@@ -151,8 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         if (interactPressed && interactingObject)
         {
-            print("interact pressed");
-            itemController.InteractItem(this, interactingObject, interactingObjectType);
+            itemController.InteractItem(this, interactingObject);
             UpdateInventory();
             interactPressed = false;
             ShowInteractMessage(false);
@@ -181,14 +179,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            print("Got item");
             interactingObject = other.gameObject;
             ShowInteractMessage();
-
-            if (other.GetComponent<Key>())
-            {
-                interactingObjectType = Item.ItemType.Key;
-            }
         }
     }
 
@@ -199,7 +191,6 @@ public class PlayerController : MonoBehaviour
             print("Leaving item");
             ShowInteractMessage(false);
             interactingObject = null;
-            interactingObjectType = Item.ItemType.None;
         }
 
     }
@@ -215,8 +206,6 @@ public class PlayerController : MonoBehaviour
         }
 
         inventoryTextBox.text = text;
-
-        print("item " + text);
     }
 
     private void ShowInteractMessage(bool show = true)
