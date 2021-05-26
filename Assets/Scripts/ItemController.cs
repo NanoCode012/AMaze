@@ -52,6 +52,9 @@ public class ItemController : MonoBehaviour
                 destroyObjAtEnd = false;
                 Destroy(obj, 5f);
                 break;
+            case Item.ItemType.Lever:
+                obj.GetComponent<Lever>().Use();
+                break;
         }
 
         if (destroyObjAtEnd) Destroy(obj);
@@ -118,6 +121,7 @@ public class ItemController : MonoBehaviour
         if (obj.GetComponent<HealthPotion>()) return Item.ItemType.HealthPotion;
         if (obj.GetComponent<StaminaPotion>()) return Item.ItemType.StaminaPotion;
         if (obj.GetComponent<Door>()) return Item.ItemType.Door;
+        if (obj.GetComponent<Lever>()) return Item.ItemType.Lever;
 
         return Item.ItemType.None;
     }
