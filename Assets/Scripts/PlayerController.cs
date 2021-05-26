@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private bool usePressed;
 
     private ItemController itemController;
+    private TrapController trapController;
 
     private void Awake()
     {
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
         inventory = new Inventory();
         itemController = FindObjectOfType<ItemController>();
+        trapController = FindObjectOfType<TrapController>();
 
         interactTextBox = FindCanvasChildren("Interact message").GetComponent<Text>();
         inventoryTextBox = FindCanvasChildren("Inventory").GetComponent<Text>();
@@ -224,6 +226,15 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         character.Player.Disable();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.transform.tag == "Trap" || hit.transform.root.tag == "Trap")
+        {
+            trapController.HandleHit(this, hit.gameObject);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
