@@ -10,6 +10,7 @@ public class Item
         HealthPotion,
         StaminaPotion,
         Crystal,
+        Door,
     }
 
     public string Name { get; set; }

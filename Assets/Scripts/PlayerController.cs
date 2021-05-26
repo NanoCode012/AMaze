@@ -220,6 +220,8 @@ public class PlayerController : MonoBehaviour
 
     public void AddInventoryItem(Item item) => inventory.AddItem(item);
     public void AddKey(Item item) => keyBag.AddItem(item);
+    public bool GotKey() => keyBag.Size() > 0;
+    public void RemoveKey() => keyBag.Pop();
 
     private void handleUse()
     {
