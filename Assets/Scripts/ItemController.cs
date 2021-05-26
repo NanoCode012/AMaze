@@ -50,6 +50,7 @@ public class ItemController : MonoBehaviour
                     print("No key");
                 }
                 destroyObjAtEnd = false;
+                Destroy(obj, 5f);
                 break;
         }
 
