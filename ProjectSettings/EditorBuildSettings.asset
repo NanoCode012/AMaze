@@ -11,4 +11,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1Player/char_play.unity
     guid: d2612aeffd259b14ca1612dfd1e2de7a
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: b7db6d6a08e08634d8513f83883a2db6
+  - enabled: 1
+    path: Assets/Scenes/1p2p.unity
+    guid: e3d09b85521a41c45ae1cd7c9f718291
+  - enabled: 1
+    path: Assets/Scenes/Setting.unity
+    guid: 3390a383f9bfd04489426d6d90e72eec
+  - enabled: 1
+    path: Assets/Scenes/2Player/Char_P1.unity
+    guid: daab17c2dbee31b45808d9975c56cb09
+  - enabled: 1
+    path: Assets/Scenes/InGame/Win.unity
+    guid: d70678a332d6a6545bd1f477a9ad22d7
+  - enabled: 1
+    path: Assets/Scenes/InGame/Lose.unity
+    guid: 327cd45e4ac76c5418c28164befa2151
+  - enabled: 1
+    path: Assets/Scenes/InGame/Pause.unity
+    guid: 4f9efc6f39827dd4f85386495bc17a18
   m_configObjects: {}
