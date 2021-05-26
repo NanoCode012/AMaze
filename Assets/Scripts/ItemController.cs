@@ -17,7 +17,7 @@ public class ItemController : MonoBehaviour
         if (itemType == Item.ItemType.Key)
         {
             print("picked up key");
-            player.AddInventoryItem(new Item("Key", Item.ItemType.Key));
+            player.AddKey(new Item("Key", Item.ItemType.Key));
         }
         else if (itemType == Item.ItemType.HealthPotion)
         {
@@ -73,6 +73,24 @@ public class ItemController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void SpawnItem(PlayerController player, Item item)
+    {
+        Instantiate(GetPrefab(item), new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, player.transform.position.z), Quaternion.identity);
+    }
+
+    public GameObject GetPrefab(Item item)
+    {
+        switch (item.Type)
+        {
+            case Item.ItemType.HealthPotion:
+                return HealthPrefab;
+            case Item.ItemType.StaminaPotion:
+                return StaminaPrefab;
+            default:
+                return null;
         }
     }
 

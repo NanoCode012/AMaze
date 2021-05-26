@@ -14,14 +14,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "2941b68d-f7a7-4f55-836a-4cedc52c5b4b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Run",
                     "type": "Button",
                     "id": "245467ea-5895-4c79-a323-e34370e8af7a",
@@ -30,9 +22,33 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "2941b68d-f7a7-4f55-836a-4cedc52c5b4b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Use",
                     "type": "Button",
                     "id": "7823957d-0415-458b-9ded-0ba08d8fc87e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateItem",
+                    "type": "Button",
+                    "id": "81610206-077a-4ee2-8ab2-a9295d487a87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DropItem",
+                    "type": "Button",
+                    "id": "7d4e9293-2851-4c22-8ec3-abb2e6eb30b0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -129,6 +145,28 @@
                 },
                 {
                     "name": "",
+                    "id": "8c684014-fe99-47e4-aae6-d592fd54e350",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e8cd54e-9a0e-45f0-b4e0-84bddad3e79e",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1ac3c9e0-c703-4f81-8c0d-5b4958e2e38a",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "Press(behavior=2)",
@@ -151,23 +189,45 @@
                 },
                 {
                     "name": "",
-                    "id": "8c684014-fe99-47e4-aae6-d592fd54e350",
-                    "path": "<Keyboard>/r",
+                    "id": "ff6924bf-b631-4ab0-979e-ecb13b4ab99e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "Use",
+                    "action": "RotateItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "2e8cd54e-9a0e-45f0-b4e0-84bddad3e79e",
-                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "id": "1d1849f2-8725-4e66-8310-60269f1b44f5",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Use",
+                    "action": "RotateItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5700d77-2477-42ab-8b61-b5664c86c282",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e96db381-829b-4919-b55c-8aa6f65aadb9",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "DropItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

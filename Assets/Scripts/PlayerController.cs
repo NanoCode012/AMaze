@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private Text interactTextBox;
     private Text inventoryTextBox;
+    private Text keyTextBox;
     private Slider hpBar;
     private Slider staminaBar;
 
@@ -58,10 +59,14 @@ public class PlayerController : MonoBehaviour
     private bool isRunning;
 
     private Inventory inventory;
+    private Inventory keyBag;
+
     private GameObject interactingObject;
     private bool interactPressed;
 
     private bool usePressed;
+    private bool rotatePressed;
+    private bool droppedPressed;
 
     private ItemController itemController;
     private TrapController trapController;
@@ -95,6 +100,16 @@ public class PlayerController : MonoBehaviour
             usePressed = true;
         };
 
+        character.Player.RotateItem.performed += ctx =>
+        {
+            rotatePressed = true;
+        };
+
+        character.Player.DropItem.performed += ctx =>
+        {
+            droppedPressed = true;
+        };
+
     }
 
     private void Start()
@@ -114,11 +129,13 @@ public class PlayerController : MonoBehaviour
         }
 
         inventory = new Inventory();
+        keyBag = new Inventory();
         itemController = FindObjectOfType<ItemController>();
         trapController = FindObjectOfType<TrapController>();
 
         interactTextBox = FindCanvasChildren("Interact message").GetComponent<Text>();
         inventoryTextBox = FindCanvasChildren("Inventory").GetComponent<Text>();
+        keyTextBox = FindCanvasChildren("Key message").GetComponent<Text>();
         hpBar = FindCanvasChildren("HP bar").GetComponent<Slider>();
         staminaBar = FindCanvasChildren("Stamina bar").GetComponent<Slider>();
     }
@@ -131,6 +148,8 @@ public class PlayerController : MonoBehaviour
 
         handleInteraction();
         handleUse();
+        handleRotateItem();
+        handleDropItem();
 
         handleBars();
     }
@@ -192,6 +211,7 @@ public class PlayerController : MonoBehaviour
         {
             itemController.InteractItem(this, interactingObject);
             UpdateInventory();
+            UpdateKeyBag();
 
             interactPressed = false;
             ShowInteractMessage(false);
@@ -199,6 +219,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void AddInventoryItem(Item item) => inventory.AddItem(item);
+    public void AddKey(Item item) => keyBag.AddItem(item);
 
     private void handleUse()
     {
@@ -209,6 +230,27 @@ public class PlayerController : MonoBehaviour
 
             UpdateInventory();
             usePressed = false;
+        }
+    }
+
+    private void handleRotateItem()
+    {
+        if (rotatePressed && inventory.Size() > 0)
+        {
+            inventory.Rotate();
+            UpdateInventory();
+            rotatePressed = false;
+        }
+    }
+
+    private void handleDropItem()
+    {
+        if (droppedPressed && inventory.Size() > 0)
+        {
+            var item = inventory.Pop();
+            itemController.SpawnItem(this, item);
+            UpdateInventory();
+            droppedPressed = false;
         }
     }
 
@@ -261,7 +303,7 @@ public class PlayerController : MonoBehaviour
         if (inventory.Size() > 0)
         {
             var temp = inventory.GetInventory();
-            string text = "Press R to use\n";
+            string text = "Press R to use item1\n";
 
             foreach (var item in temp)
             {
@@ -274,6 +316,13 @@ public class PlayerController : MonoBehaviour
         {
             inventoryTextBox.text = "";
         }
+    }
+
+    private void UpdateKeyBag()
+    {
+        var count = keyBag.Size();
+
+        keyTextBox.text = "Keys x" + count;
     }
 
     private void ShowInteractMessage(bool show = true)
