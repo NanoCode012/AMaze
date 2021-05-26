@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         get { return _hp; }
         set
         {
-            _hp = Mathf.Clamp(value, 0f, 1.0f);
+            _hp = Mathf.Clamp(value, minStats, maxStats);
         }
     }
 
@@ -34,12 +34,17 @@ public class PlayerController : MonoBehaviour
         get { return _stamina; }
         set
         {
-            _stamina = Mathf.Clamp(value, 0f, 1.0f);
+            _stamina = Mathf.Clamp(value, minStats, maxStats);
         }
     }
 
     private float _hp = 1.0f;
     private float _stamina = 0.8f;
+    [SerializeField] private float runCost = 0.01f;
+    [SerializeField] private float staminaRegen = 0.01f;
+
+    private float minStats = 0f;
+    private float maxStats = 1.0f;
 
     private Text interactTextBox;
     private Text inventoryTextBox;
@@ -130,22 +135,29 @@ public class PlayerController : MonoBehaviour
 
     private void handleMovement()
     {
-        // speed = animator.GetFloat(speedHash);
-
         if (movementPressed)
         {
+            // Get maxspeed across both axis
             var maxSpeed = Mathf.Max(Mathf.Abs(currentMovement.x), Mathf.Abs(currentMovement.y));
+
+            // Scale movespeed by maxspeed
+            // Meaning: for analog devices, moving the stick further from the center gives higher speed
             var newSpeed = moveSpeed * maxSpeed;
-            if (isRunning) newSpeed += 2.0f;
+            if (isRunning)
+            {
+                newSpeed += 2.0f;
+                Stamina -= runCost * Time.deltaTime;
+            }
 
             animator.SetFloat(speedHash, newSpeed);
-
-            // cameraController.AdjustDistance(newSpeed);
         }
         else
         {
-            animator.SetFloat(speedHash, 0f);
+            animator.SetFloat(speedHash, minStats);
         }
+
+        // Regen stamina if not running but a bit slower
+        if (!isRunning) Stamina = Mathf.Lerp(Stamina, maxStats, staminaRegen * Time.deltaTime);
     }
 
     private void handleRotation()
