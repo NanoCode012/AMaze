@@ -33,4 +33,6 @@ public class Inventory
         return (items.Count >= maxSize);
     }
 
+    public int Size() => items.Count;
+
 }

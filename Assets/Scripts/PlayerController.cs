@@ -20,8 +20,26 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Character character;
 
-    private float hp = 1.0f;
-    private float stamina = 1.0f;
+    public float Hp
+    {
+        get { return _hp; }
+        set
+        {
+            _hp = Mathf.Clamp(value, 0f, 1.0f);
+        }
+    }
+
+    public float Stamina
+    {
+        get { return _stamina; }
+        set
+        {
+            _stamina = Mathf.Clamp(value, 0f, 1.0f);
+        }
+    }
+
+    private float _hp = 1.0f;
+    private float _stamina = 0.8f;
 
     private Text interactTextBox;
     private Text inventoryTextBox;
@@ -37,6 +55,8 @@ public class PlayerController : MonoBehaviour
     private Inventory inventory;
     private GameObject interactingObject;
     private bool interactPressed;
+
+    private bool usePressed;
 
     private ItemController itemController;
 
@@ -54,14 +74,19 @@ public class PlayerController : MonoBehaviour
             currentMovement = Vector2.zero;
         };
 
+        character.Player.Run.performed += ctx =>
+        {
+            isRunning = ctx.ReadValueAsButton();
+        };
+
         character.Player.Interact.performed += ctx =>
         {
             interactPressed = true;
         };
 
-        character.Player.Run.performed += ctx =>
+        character.Player.Use.performed += ctx =>
         {
-            isRunning = ctx.ReadValueAsButton();
+            usePressed = true;
         };
 
     }
@@ -98,6 +123,7 @@ public class PlayerController : MonoBehaviour
         handleRotation();
 
         handleInteraction();
+        handleUse();
 
         handleBars();
     }
@@ -152,6 +178,7 @@ public class PlayerController : MonoBehaviour
         {
             itemController.InteractItem(this, interactingObject);
             UpdateInventory();
+
             interactPressed = false;
             ShowInteractMessage(false);
         }
@@ -159,10 +186,22 @@ public class PlayerController : MonoBehaviour
 
     public void AddInventoryItem(Item item) => inventory.AddItem(item);
 
+    private void handleUse()
+    {
+        if (usePressed && inventory.Size() > 0)
+        {
+            var item = inventory.Pop();
+            itemController.UseItem(this, item);
+
+            UpdateInventory();
+            usePressed = false;
+        }
+    }
+
     private void handleBars()
     {
-        hpBar.value = hp;
-        staminaBar.value = stamina;
+        hpBar.value = Hp;
+        staminaBar.value = Stamina;
     }
 
     private void OnEnable()
@@ -192,20 +231,26 @@ public class PlayerController : MonoBehaviour
             ShowInteractMessage(false);
             interactingObject = null;
         }
-
     }
 
     private void UpdateInventory()
     {
-        var temp = inventory.GetInventory();
-        string text = "";
-
-        foreach (var item in temp)
+        if (inventory.Size() > 0)
         {
-            text += "- " + item + "\n";
-        }
+            var temp = inventory.GetInventory();
+            string text = "Press R to use\n";
 
-        inventoryTextBox.text = text;
+            foreach (var item in temp)
+            {
+                text += "- " + item + "\n";
+            }
+
+            inventoryTextBox.text = text;
+        }
+        else
+        {
+            inventoryTextBox.text = "";
+        }
     }
 
     private void ShowInteractMessage(bool show = true)

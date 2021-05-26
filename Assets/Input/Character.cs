@@ -41,6 +41,14 @@ public class @Character : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""7823957d-0415-458b-9ded-0ba08d8fc87e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -124,7 +132,7 @@ public class @Character : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""453587e0-09fb-4375-8b3e-de5c6069a0e4"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -151,6 +159,28 @@ public class @Character : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c684014-fe99-47e4-aae6-d592fd54e350"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e8cd54e-9a0e-45f0-b4e0-84bddad3e79e"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -192,6 +222,7 @@ public class @Character : IInputActionCollection, IDisposable
         m_Player_Walk = m_Player.FindAction("Walk", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,6 +275,7 @@ public class @Character : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Walk;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_Use;
     public struct PlayerActions
     {
         private @Character m_Wrapper;
@@ -251,6 +283,7 @@ public class @Character : IInputActionCollection, IDisposable
         public InputAction @Walk => m_Wrapper.m_Player_Walk;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @Use => m_Wrapper.m_Player_Use;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +302,9 @@ public class @Character : IInputActionCollection, IDisposable
                 @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Use.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
+                @Use.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
+                @Use.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -282,6 +318,9 @@ public class @Character : IInputActionCollection, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @Use.started += instance.OnUse;
+                @Use.performed += instance.OnUse;
+                @Use.canceled += instance.OnUse;
             }
         }
     }
@@ -309,5 +348,6 @@ public class @Character : IInputActionCollection, IDisposable
         void OnWalk(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnUse(InputAction.CallbackContext context);
     }
 }

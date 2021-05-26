@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "Use",
+                    "type": "Button",
+                    "id": "7823957d-0415-458b-9ded-0ba08d8fc87e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -111,7 +119,7 @@
                 {
                     "name": "",
                     "id": "453587e0-09fb-4375-8b3e-de5c6069a0e4",
-                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -138,6 +146,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c684014-fe99-47e4-aae6-d592fd54e350",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e8cd54e-9a0e-45f0-b4e0-84bddad3e79e",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
