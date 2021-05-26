@@ -180,7 +180,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            print("Got item");
             interactingObject = other.gameObject;
             ShowInteractMessage();
 
@@ -211,8 +210,6 @@ public class PlayerController : MonoBehaviour
         }
 
         inventoryTextBox.text = text;
-
-        print("item " + text);
     }
 
     private void ShowInteractMessage(bool show = true)
