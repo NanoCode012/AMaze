@@ -11,6 +11,7 @@ public class Item
         StaminaPotion,
         Crystal,
         Door,
+        Lever,
     }
 
     public string Name { get; set; }
