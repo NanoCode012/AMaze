@@ -24471,10 +24471,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pf_AxeTrap
       objectReference: {fileID: 0}
-    - target: {fileID: 153170, guid: 2a6a1016b6a7de34889e991f0126ce38, type: 3}
-      propertyPath: m_TagString
-      value: Trap
-      objectReference: {fileID: 0}
     - target: {fileID: 453170, guid: 2a6a1016b6a7de34889e991f0126ce38, type: 3}
       propertyPath: m_RootOrder
       value: 58
