@@ -232,6 +232,294 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player1",
+            "id": "1decff64-4f41-4fd4-83fb-866a204645f0",
+            "actions": [
+                {
+                    "name": "Walk",
+                    "type": "Value",
+                    "id": "859d90e6-956c-44e0-a5f6-dac61e6f65d7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "be1b0b67-30b6-40e7-b9a0-5a85fc3f9c94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "7ad0c3c8-79a2-488c-bf1c-cedf489f219e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Use",
+                    "type": "Button",
+                    "id": "204de353-5014-4951-b652-c8cf4fc65e86",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateItem",
+                    "type": "Button",
+                    "id": "b31a55a3-4c01-494c-8b14-2efe0ac61c09",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DropItem",
+                    "type": "Button",
+                    "id": "dd990eeb-def4-4df3-8b20-67c5f602754b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "9e6e1cc9-f5a5-46a1-ae4c-73c1847f0071",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "b8f8928c-3d54-4606-9348-d79bb1ce1fc1",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "91d3e8c2-6852-4c79-aeda-6438bd4c828d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "db8105de-ceea-4102-8691-593b8c4d858a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "21c35178-ceec-44f1-b648-681a21c2ed40",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "99b11c8b-eb95-4bf5-bf00-631b6cb1ca86",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1469f338-29ca-4563-a533-f95f356754bb",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca8294d2-a4a0-455e-aa57-07630b5fe41a",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d38469c-de11-4770-8281-730642be5da2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "RotateItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3cc52e5c-d47c-494a-86d4-b841a06c333f",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2",
+            "id": "de38faa2-7144-4934-b896-a60ce70de7a2",
+            "actions": [
+                {
+                    "name": "Walk",
+                    "type": "Value",
+                    "id": "14c4188a-38c5-4318-ac39-5635807e207c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "f384d4a3-6933-4067-bd8c-e7f8008b5404",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "c16fc130-822b-4424-a2be-a0dfdb4e9314",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Use",
+                    "type": "Button",
+                    "id": "5c6302f9-7c4c-47fd-93b5-203ee28ad2cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateItem",
+                    "type": "Button",
+                    "id": "01b44785-bd60-41a1-afc8-f5f377ca42b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DropItem",
+                    "type": "Button",
+                    "id": "a8643b13-ddc6-462c-9dd8-5fbdcc3ea147",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "597c594b-b70d-4e3d-9be3-84c28aec3f95",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick",
+                    "interactions": "",
+                    "processors": "StickDeadzone,ScaleVector2(x=0.6)",
+                    "groups": "Controller",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5582b19-a51d-441b-9d28-45b6e939bfbe",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b774a769-4229-4f2f-9c3b-d95b243654f7",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68d9e597-5617-434b-927a-d85b101e7c0a",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button5",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbd8d5ef-c544-472d-8250-24b436cdae58",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "RotateItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d64cf56-989b-4784-88ff-63e1ec500e9a",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
