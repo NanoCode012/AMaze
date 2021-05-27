@@ -7,6 +7,13 @@ public class ItemController : MonoBehaviour
     public GameObject HealthPrefab;
     public GameObject StaminaPrefab;
 
+    private AudioController audioController;
+
+    private void Start()
+    {
+        audioController = FindObjectOfType<AudioController>();
+    }
+
     public void InteractItem(PlayerController player, GameObject obj)
     {
         if (!obj) return;
@@ -22,6 +29,7 @@ public class ItemController : MonoBehaviour
             case Item.ItemType.Key:
                 print("picked up key");
                 player.AddKey(new Item("Key", Item.ItemType.Key));
+                audioController.PlayClip("pickupkey");
                 break;
             case Item.ItemType.HealthPotion:
                 print("picked up healthpotion");

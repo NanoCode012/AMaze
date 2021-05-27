@@ -19602,6 +19602,7 @@ GameObject:
   - component: {fileID: 1017714036}
   - component: {fileID: 1017714039}
   - component: {fileID: 1017714038}
+  - component: {fileID: 1017714035}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -19609,6 +19610,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &1017714035
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017714034}
+  m_Enabled: 0
 --- !u!20 &1017714036
 Camera:
   m_ObjectHideFlags: 0
@@ -19888,8 +19897,8 @@ GameObject:
   - component: {fileID: 1025808468}
   - component: {fileID: 1025808467}
   - component: {fileID: 1025808466}
-  - component: {fileID: 1025808470}
   - component: {fileID: 1025808469}
+  - component: {fileID: 1025808470}
   m_Layer: 0
   m_Name: MainController
   m_TagString: Untagged
@@ -19951,7 +19960,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249b0a96b9e7bb441bb1b60383f85edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - Name: pickupkey
+    clip: {fileID: 8300000, guid: f429aba769bd09f499401fdcc206a865, type: 3}
+  - Name: fefjewkfj
+    clip: {fileID: 0}
+  - Name: 
+    clip: {fileID: 0}
+  - Name: 
+    clip: {fileID: 0}
+  - Name: 
+    clip: {fileID: 0}
 --- !u!81 &1025808470
 AudioListener:
   m_ObjectHideFlags: 0

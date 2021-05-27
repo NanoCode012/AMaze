@@ -16,10 +16,18 @@ public class AudioController : MonoBehaviour
 
     public List<Clips> clips;
 
-    public void PlayClip(string clipName, Vector3 position)
+    public void PlayClip(string clipName)
     {
         var clip = GetClip(clipName);
-        if (clip) AudioSource.PlayClipAtPoint(clip, position);
+        if (clip)
+        {
+            print("playing audio");
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Audio clip not found : " + clipName);
+        }
     }
 
     private AudioClip GetClip(string name)

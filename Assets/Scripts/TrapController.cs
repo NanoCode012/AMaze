@@ -14,6 +14,13 @@ public class TrapController : MonoBehaviour
         Blade
     }
 
+    private AudioController audioController;
+
+    private void Start()
+    {
+        audioController = FindObjectOfType<AudioController>();
+    }
+
     public void HandleHit(PlayerController player, GameObject obj)
     {
         if (!obj) return;
@@ -45,7 +52,7 @@ public class TrapController : MonoBehaviour
                 break;
             case TrapType.None:
                 break;
-            
+
         }
 
         StartCoroutine(PauseObj(obj));
