@@ -10,7 +10,8 @@ public class TrapController : MonoBehaviour
         Axe,
         Spear,
         Saw,
-        Hammer
+        Hammer,
+        Blade
     }
 
     public void HandleHit(PlayerController player, GameObject obj)
@@ -38,8 +39,13 @@ public class TrapController : MonoBehaviour
                 print("hit by hammer");
                 player.Hp -= 0.4f;
                 break;
+            case TrapType.Blade:
+                print("hit by blade");
+                player.Hp -= 0.4f;
+                break;
             case TrapType.None:
                 break;
+            
         }
 
         StartCoroutine(PauseObj(obj));
@@ -59,6 +65,7 @@ public class TrapController : MonoBehaviour
         if (obj.GetComponent<Spear>()) return TrapType.Spear;
         if (obj.GetComponent<SawBlade>()) return TrapType.Saw;
         if (obj.GetComponent<Hammer>()) return TrapType.Hammer;
+        if (obj.GetComponent<Blade>()) return TrapType.Blade;
 
         return TrapType.None;
     }
