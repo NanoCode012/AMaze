@@ -13,6 +13,7 @@ public class Item
         Door,
         Lever,
         Button,
+        Chest,
     }
 
     public string Name { get; set; }
