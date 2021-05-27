@@ -1018,7 +1018,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Setting
+  m_Text: credit
 --- !u!222 &827588294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1468,7 +1468,7 @@ GameObject:
   - component: {fileID: 1468436251}
   - component: {fileID: 1468436250}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1753,7 +1753,7 @@ GameObject:
   - component: {fileID: 1741263136}
   - component: {fileID: 1741263135}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1833,6 +1833,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 327203680}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Setting
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1741263136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,7 +1863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b5a2f873767ee942abb08ec75ee4d4f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cbdc17ef3e1fe3a40b6bf83f17006e93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2017,6 +2028,10 @@ MonoBehaviour:
   - char_P1
   - char_P2
   - Setting
+  - Credit1
+  - Credit2
+  - Credit3
+  - Credit4
   instanceName: start song
 --- !u!1 &1987468995
 GameObject:
@@ -2222,7 +2237,7 @@ GameObject:
   - component: {fileID: 2126355178}
   - component: {fileID: 2126355177}
   m_Layer: 5
-  m_Name: Setting
+  m_Name: Credit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2299,7 +2314,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Setting
+          m_StringArgument: Credit1
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 624341198}
