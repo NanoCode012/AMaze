@@ -8,6 +8,7 @@ public class VolumeController : MonoBehaviour
     public static VolumeController volumeController;
 
     private AudioSource audioSource;
+    private bool mute = false;
 
     [SerializeField] private float volume = 0.5f;
 
@@ -20,26 +21,39 @@ public class VolumeController : MonoBehaviour
             SceneManager.sceneLoaded += OnSceneLoaded;
             DontDestroyOnLoad(gameObject);
 
-            FindAudioSource();
-            SetVolume(volume);
+            Setup();
         }
     }
 
-    private void Update()
+    private void Setup()
     {
+        FindAudioSource();
         SetVolume(volume);
+        SetMute();
     }
 
-    public void SetVolume(float vol)
+    public void SetVolume(System.Single vol)
     {
         audioSource.volume = vol;
         volume = vol;
     }
 
+    public float GetVolume() => volume;
+
+    public void ToggleMute()
+    {
+        mute = !mute;
+        SetMute();
+    }
+
+    public void SetMute()
+    {
+        audioSource.mute = mute;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        FindAudioSource();
-        SetVolume(volume);
+        Setup();
     }
 
     private void FindAudioSource()
