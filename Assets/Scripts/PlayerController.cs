@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
             // Scale movespeed by maxspeed
             // Meaning: for analog devices, moving the stick further from the center gives higher speed
             var newSpeed = moveSpeed * maxSpeed;
-            if (isRunning)
+            if (isRunning && Stamina > 0)
             {
                 newSpeed += 2.0f;
                 Stamina -= runCost * Time.deltaTime;
