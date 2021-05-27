@@ -5,7 +5,12 @@ using System.Linq;
 public class Inventory
 {
     private List<Item> items = new List<Item>();
-    private int maxSize = 2;
+    private int maxSize;
+
+    public Inventory(int size = 2)
+    {
+        maxSize = size;
+    }
 
     public void AddItem(Item item)
     {

@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private Text interactTextBox;
     private Text inventoryTextBox;
+    private string defaultInventoryMessage = "Press R to use item1\n";
     private Text keyTextBox;
     private Slider hpBar;
     private Slider staminaBar;
@@ -176,7 +177,6 @@ public class PlayerController : MonoBehaviour
             cameraController = cameraObj.GetComponent<CameraController>();
         }
 
-        inventory = new Inventory();
         keyBag = new Inventory();
         itemController = FindObjectOfType<ItemController>();
         trapController = FindObjectOfType<TrapController>();
@@ -186,6 +186,18 @@ public class PlayerController : MonoBehaviour
         keyTextBox = FindCanvasChildren("Key message").GetComponent<Text>();
         hpBar = FindCanvasChildren("HP bar").GetComponent<Slider>();
         staminaBar = FindCanvasChildren("Stamina bar").GetComponent<Slider>();
+
+        if (playerType == PlayerType.P1)
+        {
+            inventory = new Inventory(3);
+        }
+        else // Female character
+        {
+            inventory = new Inventory();
+            staminaRegen *= 2;
+            interactTextBox.text = "Press A to interact";
+            defaultInventoryMessage = "Press X to use item1\n";
+        }
     }
 
     private void Update()
@@ -367,7 +379,7 @@ public class PlayerController : MonoBehaviour
         if (inventory.Size() > 0)
         {
             var temp = inventory.GetInventory();
-            string text = "Press R to use item1\n";
+            string text = defaultInventoryMessage;
 
             foreach (var item in temp)
             {
