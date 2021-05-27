@@ -12,6 +12,7 @@ public class Item
         Crystal,
         Door,
         Lever,
+        Button,
     }
 
     public string Name { get; set; }

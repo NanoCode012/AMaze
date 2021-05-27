@@ -40,20 +40,20 @@ public class ItemController : MonoBehaviour
                 print("touch door");
                 if (player.GotKey())
                 {
-                    var animator = obj.GetComponentInParent<Animator>();
-                    animator.SetTrigger("opendoor");
+                    obj.GetComponent<Door>().Open();
                     player.RemoveKey();
-                    obj.GetComponentInParent<BoxCollider>().enabled = false;
                 }
                 else
                 {
                     print("No key");
                 }
                 destroyObjAtEnd = false;
-                Destroy(obj, 5f);
                 break;
             case Item.ItemType.Lever:
                 obj.GetComponent<Lever>().Use();
+                break;
+            case Item.ItemType.Button:
+                obj.GetComponent<Button>().Use();
                 break;
         }
 
