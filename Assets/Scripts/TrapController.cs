@@ -31,22 +31,29 @@ public class TrapController : MonoBehaviour
         switch (trapType)
         {
             case TrapType.Axe:
+                audioController.PlayClip("trap");
                 print("hit by axe");
                 player.Hp -= 0.8f;
                 break;
             case TrapType.Spear:
+                audioController.PlayClip("trap");
                 print("hit by spear");
                 player.Hp -= 0.3f;
                 break;
             case TrapType.Saw:
+                audioController.PlayClip("trap");
+                audioController.PlayClip("saw");
                 print("hit by saw");
                 player.Hp -= 0.6f;
                 break;
             case TrapType.Hammer:
+                audioController.PlayClip("trap");
                 print("hit by hammer");
                 player.Hp -= 0.4f;
                 break;
             case TrapType.Blade:
+                audioController.PlayClip("trap");
+                audioController.PlayClip("blade");
                 print("hit by blade");
                 player.Hp -= 0.4f;
                 break;

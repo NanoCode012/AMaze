@@ -19965,14 +19965,40 @@ MonoBehaviour:
   clips:
   - Name: pickupkey
     clip: {fileID: 8300000, guid: f429aba769bd09f499401fdcc206a865, type: 3}
-  - Name: fefjewkfj
-    clip: {fileID: 0}
-  - Name: 
-    clip: {fileID: 0}
-  - Name: 
-    clip: {fileID: 0}
-  - Name: 
-    clip: {fileID: 0}
+  - Name: hurt_m
+    clip: {fileID: 8300000, guid: ceda31f4670c21949b6a0918f01a301b, type: 3}
+  - Name: hurt_f
+    clip: {fileID: 8300000, guid: 18224b5fd50c8c34aa24174244d55539, type: 3}
+  - Name: trap
+    clip: {fileID: 8300000, guid: 54647408c33a3fd428851b93c710c833, type: 3}
+  - Name: door
+    clip: {fileID: 8300000, guid: 8340ba925a574fe4a9f8cd7d4c4c59ef, type: 3}
+  - Name: lever
+    clip: {fileID: 8300000, guid: 7486d5412cfe4db4991602e2f226ecf9, type: 3}
+  - Name: button
+    clip: {fileID: 8300000, guid: 23d2c79332437554c91ecd1a47311042, type: 3}
+  - Name: platform
+    clip: {fileID: 8300000, guid: 9ee110a4a4917c84a83a07640486e021, type: 3}
+  - Name: pressure
+    clip: {fileID: 8300000, guid: a38b2e5dba9b99c45a505da01eec2d1f, type: 3}
+  - Name: itemconsume
+    clip: {fileID: 8300000, guid: f2f4627f67eb13d448de7c1c88896712, type: 3}
+  - Name: crystal
+    clip: {fileID: 8300000, guid: 54d4511a832144f4cbf958f42884997b, type: 3}
+  - Name: chest
+    clip: {fileID: 8300000, guid: a827ba8fe7c95bd4b9963871e7c28ea6, type: 3}
+  - Name: itempickup
+    clip: {fileID: 8300000, guid: 13848b3afbcbb0c48a8635b2b3e2ea7c, type: 3}
+  - Name: saw
+    clip: {fileID: 8300000, guid: 150d4516f39f2fa46a3f39e1f3d0ea5a, type: 3}
+  - Name: blade
+    clip: {fileID: 8300000, guid: dc47bf80601023b4185eb03f0bebd75f, type: 3}
+  - Name: secret
+    clip: {fileID: 8300000, guid: eb011fa48fe9d8a49a3bc8fa98a88048, type: 3}
+  - Name: final
+    clip: {fileID: 8300000, guid: 45d5c3a091964f943901da347d920a9d, type: 3}
+  - Name: death
+    clip: {fileID: 8300000, guid: 2ea916601358035419680d4a80a4327b, type: 3}
 --- !u!81 &1025808470
 AudioListener:
   m_ObjectHideFlags: 0
@@ -20005,8 +20031,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bfa43aeeb5ca41444871d54f64bb7423, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
-  m_Pitch: 1
+  m_Volume: 0.09
+  m_Pitch: 0.4
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -24310,7 +24336,7 @@ PrefabInstance:
     - target: {fileID: 1599416652553789180, guid: d9f31b2afee4a1847bde27c6bf2edb9e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.065
+      value: 19.7
       objectReference: {fileID: 0}
     - target: {fileID: 1599416652553789180, guid: d9f31b2afee4a1847bde27c6bf2edb9e,
         type: 3}
