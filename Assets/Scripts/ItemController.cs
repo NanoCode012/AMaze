@@ -34,13 +34,16 @@ public class ItemController : MonoBehaviour
             case Item.ItemType.HealthPotion:
                 print("picked up healthpotion");
                 player.AddInventoryItem(new Item("Health potion", Item.ItemType.HealthPotion));
+                audioController.PlayClip("itempickup");
                 break;
             case Item.ItemType.StaminaPotion:
                 print("picked up staminapotion");
                 player.AddInventoryItem(new Item("Stamina potion", Item.ItemType.StaminaPotion));
+                audioController.PlayClip("itempickup");
                 break;
             case Item.ItemType.Crystal:
                 print("Touched crystal");
+                audioController.PlayClip("crystal");
 
                 choicePrefab = GetRandomPrefab();
                 if (choicePrefab != null) Instantiate(choicePrefab, obj.transform.position, Quaternion.identity);
@@ -49,6 +52,7 @@ public class ItemController : MonoBehaviour
                 print("touch door");
                 if (player.GotKey())
                 {
+                    audioController.PlayClip("door");
                     obj.GetComponent<Door>().Open();
                     player.RemoveKey();
                 }
@@ -59,14 +63,17 @@ public class ItemController : MonoBehaviour
                 destroyObjAtEnd = false;
                 break;
             case Item.ItemType.Lever:
+                audioController.PlayClip("lever");
                 obj.GetComponent<Lever>().Use();
                 destroyObjAtEnd = false;
                 break;
             case Item.ItemType.Button:
+                audioController.PlayClip("button");
                 obj.GetComponent<Button>().Use();
                 destroyObjAtEnd = false;
                 break;
             case Item.ItemType.Chest:
+                audioController.PlayClip("chest");
                 choicePrefab = GetRandomPrefab();
                 obj.GetComponent<Chest>().Open(choicePrefab);
                 destroyObjAtEnd = false;
@@ -96,10 +103,12 @@ public class ItemController : MonoBehaviour
         switch (item.Type)
         {
             case Item.ItemType.HealthPotion:
+                audioController.PlayClip("itemconsume");
                 print("increased hp");
                 player.Hp += 0.2f;
                 break;
             case Item.ItemType.StaminaPotion:
+                audioController.PlayClip("itemconsume");
                 print("increased stamina");
                 player.Stamina += 0.2f;
                 break;
