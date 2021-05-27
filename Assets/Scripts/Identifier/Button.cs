@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Door : MonoBehaviour
+public class Button : MonoBehaviour
 {
+    public Door target;
+
     private Animator animator;
-    private BoxCollider boxCollider;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider>();
     }
 
-    public void Open()
+    public void Use()
     {
-        animator.SetTrigger("opendoor");
-        boxCollider.enabled = false;
-        Destroy(gameObject, 5f);
+        animator.SetTrigger("push");
+        target.Open();
     }
 }

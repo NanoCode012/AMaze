@@ -15,6 +15,7 @@ public class ItemController : MonoBehaviour
         var itemType = GetItemType(obj);
 
         bool destroyObjAtEnd = true;
+        GameObject choicePrefab;
 
         switch (itemType)
         {
@@ -33,27 +34,34 @@ public class ItemController : MonoBehaviour
             case Item.ItemType.Crystal:
                 print("Touched crystal");
 
-                var choicePrefab = GetRandomPrefab();
+                choicePrefab = GetRandomPrefab();
                 if (choicePrefab != null) Instantiate(choicePrefab, obj.transform.position, Quaternion.identity);
                 break;
             case Item.ItemType.Door:
                 print("touch door");
                 if (player.GotKey())
                 {
-                    var animator = obj.GetComponentInParent<Animator>();
-                    animator.SetTrigger("opendoor");
+                    obj.GetComponent<Door>().Open();
                     player.RemoveKey();
-                    obj.GetComponentInParent<BoxCollider>().enabled = false;
                 }
                 else
                 {
                     print("No key");
                 }
                 destroyObjAtEnd = false;
-                Destroy(obj, 5f);
                 break;
             case Item.ItemType.Lever:
                 obj.GetComponent<Lever>().Use();
+                destroyObjAtEnd = false;
+                break;
+            case Item.ItemType.Button:
+                obj.GetComponent<Button>().Use();
+                destroyObjAtEnd = false;
+                break;
+            case Item.ItemType.Chest:
+                choicePrefab = GetRandomPrefab();
+                obj.GetComponent<Chest>().Open(choicePrefab);
+                destroyObjAtEnd = false;
                 break;
         }
 
@@ -122,6 +130,8 @@ public class ItemController : MonoBehaviour
         if (obj.GetComponent<StaminaPotion>()) return Item.ItemType.StaminaPotion;
         if (obj.GetComponent<Door>()) return Item.ItemType.Door;
         if (obj.GetComponent<Lever>()) return Item.ItemType.Lever;
+        if (obj.GetComponent<Button>()) return Item.ItemType.Button;
+        if (obj.GetComponent<Chest>()) return Item.ItemType.Chest;
 
         return Item.ItemType.None;
     }

@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4710692867113544}
   - component: {fileID: 33617088511009050}
   - component: {fileID: 23852113630402116}
+  - component: {fileID: 239307899332120889}
   - component: {fileID: 2378378519398047939}
   m_Layer: 0
   m_Name: "\u0421rystal_3"
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,6 +82,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &239307899332120889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575022313315324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab09c16035886a744959498479595f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2378378519398047939
 BoxCollider:
   m_ObjectHideFlags: 0

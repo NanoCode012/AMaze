@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Door : MonoBehaviour
+public class FinalDoor : MonoBehaviour
 {
     private Animator animator;
     private BoxCollider boxCollider;
@@ -16,8 +15,13 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        animator.SetTrigger("opendoor");
+        animator.SetTrigger("open");
         boxCollider.enabled = false;
-        Destroy(gameObject, 5f);
+        // Play soundfx to opendoor;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Open();
     }
 }
