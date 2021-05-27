@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
         get { return _hp; }
         set
         {
+            if (value <= minStats) sceneController.LoadScene("Lose");
+
             _hp = Mathf.Clamp(value, minStats, maxStats);
         }
     }
@@ -78,6 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private ItemController itemController;
     private TrapController trapController;
+
+    private ChangeSceneWithButton sceneController;
 
     private void Awake()
     {
@@ -180,6 +184,7 @@ public class PlayerController : MonoBehaviour
         keyBag = new Inventory();
         itemController = FindObjectOfType<ItemController>();
         trapController = FindObjectOfType<TrapController>();
+        sceneController = FindObjectOfType<ChangeSceneWithButton>();
 
         interactTextBox = FindCanvasChildren("Interact message").GetComponent<Text>();
         inventoryTextBox = FindCanvasChildren("Inventory").GetComponent<Text>();
