@@ -13,7 +13,7 @@ public class ChangeSceneWithButton : MonoBehaviour
 
     IEnumerator DelaySceneLoad(string SceneName)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene(SceneName);
     }
 }
