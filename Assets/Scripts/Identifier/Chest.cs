@@ -15,12 +15,12 @@ public class Chest : MonoBehaviour
 
     public void Open(GameObject objToSpawn)
     {
-        animator.SetTrigger("opendoor");
+        animator.SetTrigger("open");
         boxCollider.enabled = false;
         StartCoroutine(SpawnRewardDelay(objToSpawn));
     }
 
-    private IEnumerator SpawnRewardDelay(GameObject obj, float time = 3)
+    private IEnumerator SpawnRewardDelay(GameObject obj, float time = 2)
     {
         yield return new WaitForSeconds(time);
         Instantiate(obj, transform.position, Quaternion.identity);

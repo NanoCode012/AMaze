@@ -52,13 +52,16 @@ public class ItemController : MonoBehaviour
                 break;
             case Item.ItemType.Lever:
                 obj.GetComponent<Lever>().Use();
+                destroyObjAtEnd = false;
                 break;
             case Item.ItemType.Button:
                 obj.GetComponent<Button>().Use();
+                destroyObjAtEnd = false;
                 break;
             case Item.ItemType.Chest:
                 choicePrefab = GetRandomPrefab();
                 obj.GetComponent<Chest>().Open(choicePrefab);
+                destroyObjAtEnd = false;
                 break;
         }
 
