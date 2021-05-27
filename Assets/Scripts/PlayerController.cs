@@ -8,7 +8,14 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerType
+    {
+        P1, P2
+    }
+
+
     public GameObject playerCanvas;
+    public PlayerType playerType;
 
     public GameObject cameraObj;
     private Transform cameraTarget;
@@ -75,40 +82,81 @@ public class PlayerController : MonoBehaviour
     {
         character = new Character();
 
-        character.Player.Walk.performed += ctx =>
+        if (playerType == PlayerType.P1)
         {
-            currentMovement = ctx.ReadValue<Vector2>();
-        };
 
-        character.Player.Walk.canceled += ctx =>
-        {
-            currentMovement = Vector2.zero;
-        };
+            character.Player1.Walk.performed += ctx =>
+            {
+                currentMovement = ctx.ReadValue<Vector2>();
+            };
 
-        character.Player.Run.performed += ctx =>
-        {
-            isRunning = ctx.ReadValueAsButton();
-        };
+            character.Player1.Walk.canceled += ctx =>
+            {
+                currentMovement = Vector2.zero;
+            };
 
-        character.Player.Interact.performed += ctx =>
-        {
-            interactPressed = true;
-        };
+            character.Player1.Run.performed += ctx =>
+            {
+                isRunning = ctx.ReadValueAsButton();
+            };
 
-        character.Player.Use.performed += ctx =>
-        {
-            usePressed = true;
-        };
+            character.Player1.Interact.performed += ctx =>
+            {
+                interactPressed = true;
+            };
 
-        character.Player.RotateItem.performed += ctx =>
-        {
-            rotatePressed = true;
-        };
+            character.Player1.Use.performed += ctx =>
+            {
+                usePressed = true;
+            };
 
-        character.Player.DropItem.performed += ctx =>
+            character.Player1.RotateItem.performed += ctx =>
+            {
+                rotatePressed = true;
+            };
+
+            character.Player1.DropItem.performed += ctx =>
+            {
+                droppedPressed = true;
+            };
+        }
+        else
         {
-            droppedPressed = true;
-        };
+            character.Player2.Walk.performed += ctx =>
+            {
+                currentMovement = ctx.ReadValue<Vector2>();
+            };
+
+            character.Player2.Walk.canceled += ctx =>
+            {
+                currentMovement = Vector2.zero;
+            };
+
+            character.Player2.Run.performed += ctx =>
+            {
+                isRunning = ctx.ReadValueAsButton();
+            };
+
+            character.Player2.Interact.performed += ctx =>
+            {
+                interactPressed = true;
+            };
+
+            character.Player2.Use.performed += ctx =>
+            {
+                usePressed = true;
+            };
+
+            character.Player2.RotateItem.performed += ctx =>
+            {
+                rotatePressed = true;
+            };
+
+            character.Player2.DropItem.performed += ctx =>
+            {
+                droppedPressed = true;
+            };
+        }
 
     }
 
@@ -264,12 +312,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        character.Player.Enable();
+        if (playerType == PlayerType.P1)
+        {
+            character.Player1.Enable();
+        }
+        else
+        {
+            character.Player2.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        character.Player.Disable();
+        if (playerType == PlayerType.P1)
+        {
+            character.Player1.Disable();
+        }
+        else
+        {
+            character.Player2.Disable();
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
