@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour
 
     private float _hp = 1.0f;
     private float _stamina = 0.8f;
-    [SerializeField] private float runCost = 0.01f;
-    [SerializeField] private float staminaRegen = 0.01f;
+    private float runCost = 0.02f;
+    private float staminaRegen = 0.01f;
 
     private float minStats = 0f;
     private float maxStats = 1.0f;
