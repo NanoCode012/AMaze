@@ -12,7 +12,7 @@ public class VolumeController : MonoBehaviour
 
     [SerializeField] private float volume = 0.5f;
 
-    private void Awake()
+    private void Start()
     {
         if (volumeController) { Destroy(this.gameObject); }
         else
@@ -67,6 +67,10 @@ public class VolumeController : MonoBehaviour
         else if (FindObjectOfType<MusicScenes>())
         {
             audioSource = FindObjectOfType<MusicScenes>().GetComponent<AudioSource>();
+        }
+        else
+        {
+            audioSource = GameObject.FindGameObjectWithTag("MusicPlayer").GetComponent<AudioSource>();
         }
     }
 }
