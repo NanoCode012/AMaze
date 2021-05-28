@@ -369,6 +369,10 @@ public class PlayerController : MonoBehaviour
             interactingObject = other.gameObject;
             ShowInteractMessage();
         }
+        else if (other.CompareTag("Enemy"))
+        {
+            Hp = 0;
+        }
     }
 
     private void OnTriggerExit(Collider other)
