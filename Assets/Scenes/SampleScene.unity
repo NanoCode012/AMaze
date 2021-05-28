@@ -23432,7 +23432,7 @@ MonoBehaviour:
   - Name: itempickup
     clip: {fileID: 8300000, guid: 13848b3afbcbb0c48a8635b2b3e2ea7c, type: 3}
   - Name: saw
-    clip: {fileID: 8300000, guid: 150d4516f39f2fa46a3f39e1f3d0ea5a, type: 3}
+    clip: {fileID: 8300000, guid: 3fe2c3f70e0920143875ff565e55f178, type: 3}
   - Name: blade
     clip: {fileID: 8300000, guid: dc47bf80601023b4185eb03f0bebd75f, type: 3}
   - Name: secret
@@ -49878,8 +49878,6 @@ MonoBehaviour:
   playerCanvas: {fileID: 741438043}
   playerType: 1
   cameraObj: {fileID: 1847361919}
-  runCost: 0.01
-  staminaRegen: 0.01
 --- !u!114 &2120299526
 MonoBehaviour:
   m_ObjectHideFlags: 0
