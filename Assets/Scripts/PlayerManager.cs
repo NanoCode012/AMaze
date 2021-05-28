@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager playerManager;
+    public PlayerController.PlayerType playerType = PlayerController.PlayerType.P1;
 
     void Awake()
     {
@@ -15,8 +16,6 @@ public class PlayerManager : MonoBehaviour
             playerManager = this;
             SceneManager.sceneLoaded += OnSceneLoaded;
             DontDestroyOnLoad(gameObject);
-
-            Setup();
         }
     }
 
@@ -24,8 +23,21 @@ public class PlayerManager : MonoBehaviour
     {
         if (scene.name == "SampleScene")
         {
+            // enable stuff
+            if (playerType == PlayerController.PlayerType.P2)
+            {
 
+            }
+
+            // Destroy(gameObject);
         }
+    }
+
+    public void SetMultiplayer(bool multiplayer)
+    {
+        playerType = (multiplayer)
+                                ? PlayerController.PlayerType.P2
+                                : PlayerController.PlayerType.P1;
     }
 
 }
