@@ -139,6 +139,17 @@ public class ItemController : MonoBehaviour
         }
     }
 
+    public bool UseDefaultMessage(PlayerController player, GameObject obj)
+    {
+        if (player.IsInventoryFull())
+        {
+            var type = GetItemType(obj);
+            return (type != Item.ItemType.HealthPotion && type != Item.ItemType.StaminaPotion);
+        }
+
+        return true;
+    }
+
     public Item.ItemType GetItemType(GameObject obj)
     {
         if (obj.GetComponent<Key>()) return Item.ItemType.Key;
