@@ -16,4 +16,9 @@ public class ChangeSceneWithButton : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene(SceneName);
     }
+
+    public void ExitApp()
+    {
+        Application.Quit();
+    }
 }
