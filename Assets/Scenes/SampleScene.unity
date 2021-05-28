@@ -1132,7 +1132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &49727423
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1451,7 +1451,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.603, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4216,7 +4216,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.595, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.19999695, y: 0}
   m_SizeDelta: {x: 10.390381, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12322,7 +12322,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.595, y: 1}
   m_AnchoredPosition: {x: 0.19999695, y: 0}
   m_SizeDelta: {x: 10.390381, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15080,7 +15080,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.603, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15896,7 +15896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &741438044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20949,6 +20949,10 @@ PrefabInstance:
       value: Player P1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -21823,7 +21827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1017714035
 AudioListener:
   m_ObjectHideFlags: 0
@@ -22115,6 +22119,7 @@ GameObject:
   - component: {fileID: 1025808470}
   - component: {fileID: 1025808471}
   - component: {fileID: 1025808472}
+  - component: {fileID: 1025808473}
   m_Layer: 0
   m_Name: MainController
   m_TagString: Untagged
@@ -22329,6 +22334,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1025808473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025808465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06174666adb51bc489d530116e42e97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  singlePlayer:
+  - {fileID: 1354815326}
+  - {fileID: 1778203121}
+  - {fileID: 1017714034}
+  multiplayer:
+  - {fileID: 1279838295}
+  - {fileID: 2120299522}
+  - {fileID: 49727422}
+  - {fileID: 741438043}
+  - {fileID: 1749674512}
+  - {fileID: 1147411720}
 --- !u!1 &1029140667
 GameObject:
   m_ObjectHideFlags: 0
@@ -24344,7 +24372,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.603, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25074,7 +25102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1147411721
 Transform:
   m_ObjectHideFlags: 0
@@ -27775,7 +27803,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.595, y: 1}
   m_AnchoredPosition: {x: 0.19999695, y: 0}
   m_SizeDelta: {x: 10.390381, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -28404,6 +28432,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b520dd2e830b53248a9a07d2d9f3f3dd, type: 3}
+--- !u!1 &1279838295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70,
+    type: 3}
+  m_PrefabInstance: {fileID: 999748736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1285849093
 GameObject:
   m_ObjectHideFlags: 0
@@ -29859,6 +29893,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4189399511736688, guid: e6911a57b4d95ba4f86e3e41e5a9fcac,
     type: 3}
   m_PrefabInstance: {fileID: 823769612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1354815326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70,
+    type: 3}
+  m_PrefabInstance: {fileID: 1670061631}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1364472750
 PrefabInstance:
@@ -36313,7 +36353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4433cf75ba397654aa7fa86853e4fb70, type: 3}
       propertyPath: m_TagString
@@ -38145,7 +38185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1749674513
 Transform:
   m_ObjectHideFlags: 0
@@ -38924,7 +38964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1778203122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39209,6 +39249,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ea966a6c6626547479c4d8c7b7a4ab8e, type: 3}
       propertyPath: m_Layer
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ea966a6c6626547479c4d8c7b7a4ab8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: ea966a6c6626547479c4d8c7b7a4ab8e, type: 3}
       propertyPath: m_Layer

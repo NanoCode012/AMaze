@@ -23,13 +23,15 @@ public class PlayerManager : MonoBehaviour
     {
         if (scene.name == "SampleScene")
         {
-            // enable stuff
             if (playerType == PlayerController.PlayerType.P2)
             {
-
+                var multiplayer = FindObjectOfType<MultiplayerController>();
+                multiplayer.SetMultiplayer();
             }
 
-            // Destroy(gameObject);
+            // playerManager = null;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Destroy(gameObject);
         }
     }
 
