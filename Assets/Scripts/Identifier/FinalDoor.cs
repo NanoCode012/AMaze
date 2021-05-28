@@ -6,9 +6,11 @@ public class FinalDoor : MonoBehaviour
 {
     private Animator animator;
     private BoxCollider boxCollider;
+    private AudioController audioController;
     // Start is called before the first frame update
     void Start()
     {
+        audioController = FindObjectOfType<AudioController>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
     }
@@ -17,6 +19,7 @@ public class FinalDoor : MonoBehaviour
     {
         animator.SetTrigger("open");
         boxCollider.enabled = false;
+        audioController.PlayClip("final");
         // Play soundfx to opendoor;
     }
 
