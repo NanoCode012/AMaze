@@ -23309,7 +23309,7 @@ PrefabInstance:
     - target: {fileID: 7806794671288245942, guid: f5b04c00596c68849bce306679cbfc06,
         type: 3}
       propertyPath: m_Name
-      value: Ghost (1)
+      value: Ghost P1
       objectReference: {fileID: 0}
     - target: {fileID: 7806794671288245942, guid: f5b04c00596c68849bce306679cbfc06,
         type: 3}
@@ -28169,12 +28169,12 @@ PrefabInstance:
     - target: {fileID: 7806794671288245942, guid: f5b04c00596c68849bce306679cbfc06,
         type: 3}
       propertyPath: m_Name
-      value: Ghost (2)
+      value: Ghost P2
       objectReference: {fileID: 0}
     - target: {fileID: 7806794671288245942, guid: f5b04c00596c68849bce306679cbfc06,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b04c00596c68849bce306679cbfc06, type: 3}
