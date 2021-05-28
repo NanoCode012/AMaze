@@ -2036,8 +2036,8 @@ MonoBehaviour:
   - Start
   - 1p2p
   - char_play
-  - char_P1
-  - char_P2
+  - Char_P1
+  - Char_P2
   - Setting
   - Credit1
   - Credit2
