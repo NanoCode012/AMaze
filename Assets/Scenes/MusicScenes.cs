@@ -66,7 +66,6 @@ public class MusicScenes : MonoBehaviour
             // unsubscribe to the scene load callback
             SceneManager.sceneLoaded -= OnSceneLoaded;
             Destroy(this.gameObject);
-            Debug.Log("Deleting self");
         }
     }
 }
