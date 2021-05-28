@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     private float maxStats = 1.0f;
 
     private Text interactTextBox;
+    private string defaultInteractMessage = "Press E to interact";
     private Text inventoryTextBox;
     private string defaultInventoryMessage = "Press R to use item1\n";
     private Text keyTextBox;
@@ -200,7 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             inventory = new Inventory();
             staminaRegen *= 2;
-            interactTextBox.text = "Press A to interact";
+            defaultInteractMessage = "Press A to interact";
             defaultInventoryMessage = "Press X to use item1\n";
         }
     }
@@ -284,6 +285,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void AddInventoryItem(Item item) => inventory.AddItem(item);
+    public bool IsInventoryFull() => inventory.IsFull();
     public void AddKey(Item item) => keyBag.AddItem(item);
     public bool GotKey() => keyBag.Size() > 0;
     public void RemoveKey() => keyBag.Pop();
@@ -408,6 +410,9 @@ public class PlayerController : MonoBehaviour
 
     private void ShowInteractMessage(bool show = true)
     {
+        if (itemController.UseDefaultMessage(this, interactingObject)) interactTextBox.text = defaultInteractMessage;
+        else interactTextBox.text = "Inventory is full";
+
         interactTextBox.enabled = show;
     }
 
