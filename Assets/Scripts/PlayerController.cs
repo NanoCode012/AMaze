@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
             cameraController = cameraObj.GetComponent<CameraController>();
         }
 
-        keyBag = new Inventory();
+        keyBag = new Inventory(10);
         itemController = FindObjectOfType<ItemController>();
         trapController = FindObjectOfType<TrapController>();
         sceneController = FindObjectOfType<ChangeSceneWithButton>();
