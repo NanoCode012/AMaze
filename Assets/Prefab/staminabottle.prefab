@@ -104,8 +104,8 @@ GameObject:
   - component: {fileID: 8513837900555334584}
   - component: {fileID: 8506195155454506458}
   - component: {fileID: 8578316955511038888}
-  - component: {fileID: -7962932417752372649}
   - component: {fileID: -3455483154338257667}
+  - component: {fileID: 5916270054986996420}
   m_Layer: 0
   m_Name: staminabottle
   m_TagString: Item
@@ -195,19 +195,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &-7962932417752372649
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528666759936561794}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.35075733, y: 0.85118955, z: 0.35075733}
-  m_Center: {x: 0, y: -0.21044275, z: 0}
 --- !u!114 &-3455483154338257667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +207,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb1ef1078d51e9419ef1467fb683252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5916270054986996420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528666759936561794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4, y: 3.16, z: 3.51}
+  m_Center: {x: 0, y: 0, z: -0.000000014901161}
